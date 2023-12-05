@@ -40,7 +40,7 @@ async def recognizerALPHACER(uri:str, mp3file=str):
                                         
     print(f"\n\n\n[VOSK/Alphacer][{file_name}]Output:")          #main вывод текста
     print(f"{file_name}:{text}")
-    return text
+    return file_name, text
         
 
 

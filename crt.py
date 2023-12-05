@@ -50,8 +50,8 @@ def recognizerCRT(mp3file:str, session_id:str, model_id:str="FarFieldRus10:offli
     text = response.json()["text"]
     print("[ЦРТоблако]Ответ получен...")
 
-    #print(f"[ЦРТоблако][{file_name}]Output:")                                             
-    #print(f"{file_name}:{text}\n")
+    print(f"[ЦРТоблако][{file_name}]Output:")                                             
+    print(f"{file_name}:{text}\n")
     return file_name, text
 
 

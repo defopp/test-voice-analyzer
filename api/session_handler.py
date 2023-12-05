@@ -10,7 +10,7 @@ def start_session(domain_id:int, password:str, username:str, url="https://cloud.
     }                                                        #Создание сессии
 
     response = requests.post(url=url, json=json).json()           #(get)запрос создания
-    print(f"\nСессия создалась:   {response}")                      #эхо
+    print(f"\nСоздание сессии:   {response}")                      #эхо
     session_id = response.get("session_id")
     session_status(session_id)                                    #запрос статуса   
     return session_id
