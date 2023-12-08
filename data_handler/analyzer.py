@@ -11,7 +11,7 @@ def search_words(opt:int,words:list, text:str) -> dict:
                 if i in words:
                     dict[str(words)] += 1                    
 
-            print(f"[анализ]Найдено: {dict}")
+            print(f"[АНАЛИЗ]Найдено: {dict}")
             return dict
         
         case 2:  ################################################################################## 2 - Подсчет листа слов(Отдельно) //слов1 - количество раз 
@@ -23,11 +23,11 @@ def search_words(opt:int,words:list, text:str) -> dict:
                 if i in dict.keys():
                     dict[i] += 1
 
-            print(f"[анализ]Найдено: {dict}")
+            print(f"[АНАЛИЗ]Найдено: {dict}")
             return dict
         
         case _:
-            raise IndexError("[анализ] Введен неверный тип Анализатора")
+            raise IndexError("[АНАЛИЗ] Введен неверный тип Анализатора")
 
 
 

@@ -1,29 +1,6 @@
 import os
 import datetime as dt
 
-def search_mp3(parent_dir:str):
-    years_dirs = os.listdir(parent_dir)
-    list = []
-    for year in years_dirs:                                             #ГОД
-        #print(year)
-        if year == "temp":
-            continue
-        months_dirs = os.listdir(f"{parent_dir}/{year}")
-        
-        for month in months_dirs:                                       #МЕСЯЦ
-            #print("--" + month)
-            files_path = os.listdir(f"{parent_dir}/{year}/{month}") 
-            #print(f"----{files_path}")
-        
-            for file in files_path:                                     #Фаил 
-                mp3_path = f"{parent_dir}/{year}/{month}/{file}"  
-                list.append(mp3_path)
-
-    print(f"[поиск]Нашел файлов в корневой папке: {len(list)}\n[поиск][вывод]list:")
-    for i in list:
-        print(i)
-    return list
-
 
 
 def inputSearch():
@@ -41,7 +18,7 @@ def inputSearch():
 
 
 
-def test(parent_dir:str, opt:int, date:str):
+def search_mp3(parent_dir:str, opt:int, date:str):
     finalList = []
 
     match opt:
@@ -92,8 +69,6 @@ def test(parent_dir:str, opt:int, date:str):
                         filedata_str = f"{day}.{month}.{year}"
                         filedata = dt.datetime.strptime(filedata_str, "%d.%m.%Y")
                         if first_date <= filedata and filedata <= second_date:
-                            
-                            print("wwwww")
                             paths = []
                             for file in filename:
                                 paths.append(f"{dirpath}/{file}")
@@ -105,25 +80,68 @@ def test(parent_dir:str, opt:int, date:str):
             pass
 
 
-    print(f"[search]Нашел файлов: {len(finalList)}")
-    print(finalList)
+    print(f"[SEARCH]Найдено файлов: {len(finalList)}\n-----")
+    for i in finalList:
+        print(i)
+    print("-----")
     return finalList
 
-                    # if int(dirpath.split("/")[-3]) >= int(year_first) and int(dirpath.split("/")[-3]) <= int(year_second): 
-                    #     print("год")
-                    #     if int(dirpath.split("/")[-2]) >= int(month_first) and int(dirpath.split("/")[-2]) <= int(month_second):
-                    #         print("месяц")
-                    #         if int(dirpath.split("/")[-1]) >= int(day_first) and int(dirpath.split("/")[-1]) <= int(day_second):
+
+
+if __name__ == "__main__":
+    #search_mp3("files")
+    opt,date = inputSearch()
+    search_mp3("files", opt, date)
+    pass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # for dirpath,dirname,filename in os.walk(top="files"):
 #     print("dirpath: ",dirpath)
 #     print("    dirname: ",dirname)
 #     print("        filename: ",filename,"\n")
 
-if __name__ == "__main__":
-    #search_mp3("files")
-    opt,date = inputSearch()
-    test("files", opt, date)
-    pass
+# 1 реализация
+# def search_mp3(parent_dir:str):
+#     years_dirs = os.listdir(parent_dir)
+#     list = []
+#     for year in years_dirs:                                             #ГОД
+#         #print(year)
+#         if year == "temp":
+#             continue
+#         months_dirs = os.listdir(f"{parent_dir}/{year}")
+        
+#         for month in months_dirs:                                       #МЕСЯЦ
+#             #print("--" + month)
+#             files_path = os.listdir(f"{parent_dir}/{year}/{month}") 
+#             #print(f"----{files_path}")
+        
+#             for file in files_path:                                     #Фаил 
+#                 mp3_path = f"{parent_dir}/{year}/{month}/{file}"  
+#                 list.append(mp3_path)
 
-
+#     print(f"[поиск]Нашел файлов в корневой папке: {len(list)}\n[поиск][вывод]list:")
+#     for i in list:
+#         print(i)
+#     return list
