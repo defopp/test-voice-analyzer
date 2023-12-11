@@ -4,18 +4,19 @@ def search_words(opt:int,words:list, text:str) -> dict:
 
     
     match opt:
-        case 1:  ################################################################################## 1 - Подсчет листа слов(вместе)    //слово1,слово2,слово3 - количество упоминаний
-            dict = {}
-            dict[str(words)] = 0
-            for i in word_list:                                 #перебор слов                       
-                if i in words:
-                    dict[str(words)] += 1                    
+        # case 1:  ################################################################################## 1 - Подсчет листа слов(вместе)    //слово1,слово2,слово3 - количество упоминаний
+        #     dict = {}
+        #     dict[str(words)] = 0
+        #     for i in word_list:                                 #перебор слов                       
+        #         if i in words:
+        #             dict[str(words)] += 1                    
 
-            print(f"[АНАЛИЗ]Найдено: {dict}")
-            return dict
+        #     print(f"[АНАЛИЗ]Найдено: {dict}")
+        #     return dict
         
         case 2:  ################################################################################## 2 - Подсчет листа слов(Отдельно) //слов1 - количество раз 
             dict = {}                                                                                                               #//слов2 - количество раз 
+            was_in = []
             for word in words:                                                                                                       
                 dict[word] = 0
 
@@ -23,8 +24,12 @@ def search_words(opt:int,words:list, text:str) -> dict:
                 if i in dict.keys():
                     dict[i] += 1
 
+            for k,v in dict.items():
+                if v != 0:
+                    was_in.append(k)
+            print(f"[АНАЛИЗ]Найденые слова: {was_in}")
             print(f"[АНАЛИЗ]Найдено: {dict}")
-            return dict
+            return dict, was_in
         
         case _:
             raise IndexError("[АНАЛИЗ] Введен неверный тип Анализатора")

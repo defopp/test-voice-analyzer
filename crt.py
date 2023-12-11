@@ -1,3 +1,4 @@
+import time
 import requests
 from api.session_handler import *  
 from data_handler.convert import *
@@ -32,6 +33,7 @@ def recognizerCRT(mp3file:str, session_id:str, model_id:str="FarFieldRus10:offli
     file_name = file_name = mp3file.split("/")[-1][:-4]
     wavfile = mp3_to_wav(mp3file)
     data = wav_to_base64(wavfile)
+    start = time.monotonic()
 
     header = {"X-Session-Id":session_id}
     data = {
@@ -50,8 +52,9 @@ def recognizerCRT(mp3file:str, session_id:str, model_id:str="FarFieldRus10:offli
     text = response.json()["text"]
     print("[ЦРТоблако]Ответ получен...")
 
-    print(f"[ЦРТоблако][{file_name}]Output:")                                             
-    print(f"{file_name}:{text}\n")
+    end = time.monotonic()-start 
+    print(f"[ЦРТоблако][{file_name}] вывод: длина текса = {len(text.split())} слов / {round(end,1)}с")                                             
+    #print(f"{file_name}:{text}\n")
     return file_name, text
 
 

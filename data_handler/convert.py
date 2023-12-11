@@ -14,7 +14,7 @@ def mp3_to_wav(path: str):
     sound = AudioSegment.from_mp3(path)     #load mp3
     sound.export(output_path, format="wav") #export mp3
     
-    print(f"\n[OK]mp3->wav")
+    print(f"[OK]mp3->wav")
     return output_path
 
 
